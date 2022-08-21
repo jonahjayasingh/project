@@ -80,10 +80,13 @@ def LR():
         cur = mysql.connection.cursor()
         cur.execute("select * from pr where email = '{}' and password = '{}';".format(email,password))
         user = cur.fetchone()
-        print(user)
         if user:
-            email = user[2]
-            return render_template("home.html", email = email)
+            cur.execute("select * from pd")
+            info = cur.fetchall()
+            cur.execute("select count(*) from pd")
+            count = cur.fetchone()
+            count = count[0]
+            return render_template("status.html" ,info=info , count=count)
         else:
             message = "please type correct email or password "
             return render_template("lr.html", message=message)

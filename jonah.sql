@@ -40,8 +40,6 @@ CREATE TABLE `pd` (
 -- Dumping data for table `pd`
 --
 
-INSERT INTO `pd` (`fname`, `sname`, `email`, `password`, `date`, `gender`) VALUES
-('Jonah', 'Jayasingh', 'jayasinghjonah@gmail.com', 'jonah', '2002-07-11', 'M');
 
 -- --------------------------------------------------------
 
@@ -62,9 +60,6 @@ CREATE TABLE `pr` (
 -- Dumping data for table `pr`
 --
 
-INSERT INTO `pr` (`fname`, `sname`, `email`, `hospital_name`, `password`, `gender`) VALUES
-('Jonah', 'Jonah', 'jayasinghjonah@gmail.com', 'Jonah', 'jonah', 'o'),
-('king', 'King', 'King@gmail.com', 'king', 'king', 'o');
 
 --
 -- Indexes for dumped tables

@@ -1,12 +1,12 @@
 from flask import Flask,render_template,request
 from flask_mysqldb import MySQL
+from flask_mail import Mail,Message
 import datetime
 
 
 app = Flask(__name__)
 
 # Configure db
-
 app.config['MYSQL_HOST'] = "localhost"
 app.config['MYSQL_USER'] = "root"
 app.config['MYSQL_PASSWORD'] = ""
@@ -14,8 +14,7 @@ app.config['MYSQL_DB'] = "jonah"
 
 mysql = MySQL(app)
 
-
-
+   
 @app.route("/")
 
 def home():
@@ -36,9 +35,9 @@ def Registerdonor():
                 email = request.form.get('email')
                 date =  request.form.get('date')
                 gender = request.form.get('gender')
-                
+                bloodgroup = request.form.get('bloodgroup')
                 cur = mysql.connection.cursor()
-                cur.execute("INSERT INTO pd     (fname,sname,password,email,date,gender) VALUES ('{}','{}','{}','{}','{}','{}')".format(fname,sname,password,email,date,gender))
+                cur.execute("INSERT INTO pd     (fname,sname,password,email,date,gender,Blood_group) VALUES ('{}','{}','{}','{}','{}','{}','{}')".format(fname,sname,password,email,date,gender,bloodgroup))
                 mysql.connection.commit()
                 cur.close()
                 return render_template("home.html")
@@ -107,6 +106,7 @@ def Logindonor():
             return render_template("home.html", email = email)
         else:
             message = "please type correct email or password "
+            
             return render_template("logindonor.html", message=message)
     return render_template("logindonor.html", message=message)
     
